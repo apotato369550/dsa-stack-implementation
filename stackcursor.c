@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include "stackcursor.h"
 
 // make the rest of the functions here
 void push(Stack *S, char X);
