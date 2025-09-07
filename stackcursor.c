@@ -9,6 +9,7 @@ void initVirtualHeap(Stack *S) {
         S->Elem[ndx].link = ndx;
     }   
     S->Avail = MAX;
+    S->List = -1;
 }
 
 int allocSpace(Stack *S) {
@@ -25,21 +26,31 @@ int deallocSpace(Stack *S, int index) {
 }
 
 void push(Stack *S, char X) {
-
+    // uses look-ahead
+    int newNode = allocSpace(S);
+    if (newNode != -1) {
+        S->Elem[newNode].data = X;
+        S->Elem[newNode].link = S->Elem[S->List].link;
+        S->Elem[S->List].link = newNode;
+    }
 }
 
 void pop(Stack *S) {
-
+    if (S->List != -1) {
+        int temp = S->List;
+        S->List = S->Elem[S->List].link;
+        deallocSpace(S, temp);
+    }
 }
 
 char top(Stack *S) {
-
+    return S->Elem[S->List].data;
 }
 
 bool isEmpty(Stack *S) {
-
+    return (S->List == -1) ? true : false;
 }
 
 bool isFull(Stack *S) {
-
+    return (S->Avail == -1) ? true : false;
 }

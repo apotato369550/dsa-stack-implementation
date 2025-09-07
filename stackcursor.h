@@ -12,6 +12,7 @@ typedef struct {
 typedef struct {
     int Avail;
     Node Elem[MAX];
+    int List;
 } Stack;
 
 
