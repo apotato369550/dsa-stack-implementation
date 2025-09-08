@@ -2,7 +2,7 @@
 #define STACK_H
 
 #include <stdbool.h>
-#define MAX 50
+#define MAX 10
 
 typedef struct {
     int link;
@@ -15,11 +15,12 @@ typedef struct {
     int List;
 } Stack;
 
-
+void initStack(Stack *S);
 void push(Stack *S, char X);
 void pop(Stack *S);
-char top(Stack *S);
-bool isEmpty(Stack *S);
-bool isFull(Stack *S);
+char top(Stack S);
+bool isEmpty(Stack S);
+bool isFull(Stack S);
+void displayStack(Stack S);
 
 #endif
