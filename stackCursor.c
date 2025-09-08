@@ -58,9 +58,12 @@ bool isFull(Stack S) {
 }
 
 void displayStack(Stack S) {
-    int trav = S.List;
-    for (trav; trav != -1; trav = S.Elem[trav].link) {
-        printf("|%c|\n", S.Elem[trav].data);
+    char topCharacter;
+    
+    while (isEmpty(S) == false) {
+        topCharacter = top(S);
+        printf("|%c|\n", topCharacter);
+        pop(&S);
     }
     printf("---\n");
 }
