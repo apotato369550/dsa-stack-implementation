@@ -4,24 +4,24 @@ void initStack(Stack *S){
     S->top = -1;
 }
 void push(Stack *S, char X){
-    if (!isFull(S)){
+    if (!isFull(*S)){
         S->data[++S->top] = X;
     }
 }
 void pop(Stack *S){
-    if (!isEmpty(S)){
+    if (!isEmpty(*S)){
         S->top--;
     }
 }
 
 char top(Stack *S){
-    if (!isEmpty(S)){
+    if (!isEmpty(*S)){
         return S->data[S->top];
     }
 }
-bool isEmpty(Stack *S){
-    return (S->top == -1) ? true : false;
+bool isEmpty(Stack S){
+    return (S.top == -1) ? true : false;
 }
-bool isFull(Stack *S){
-    return (S->top == MAX - 1) ? true : false;
+bool isFull(Stack S){
+    return (S.top == MAX - 1) ? true : false;
 }

@@ -13,7 +13,7 @@ void initStack(Stack *S);
 void push(Stack *S, char X);
 void pop(Stack *S);
 char top(Stack *S);
-bool isEmpty(Stack *S);
-bool isFull(Stack *S);
+bool isEmpty(Stack S);
+bool isFull(Stack S);
 
 #endif
