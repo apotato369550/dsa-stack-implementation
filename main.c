@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "stackCursor.h"
+#include "stackLinked.h"
 
 void insertBottom(Stack *S, char X);
 

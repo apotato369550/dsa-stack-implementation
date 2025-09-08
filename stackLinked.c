@@ -13,7 +13,7 @@ bool isFull(Stack S){
 
 //isEmpty()  
 bool isEmpty(Stack S){
-    return (S.top != NULL) ? true : false;
+    return (S.top == NULL) ? true : false;
 }
 
 //push()
@@ -40,18 +40,25 @@ char top(Stack S){
 }
 
 void displayStack(Stack S){
+    /*
+    LIST trav = S.top;
+    for (trav; trav!= NULL; trav = trav->next) {
+        printf("%c\n", trav->data);
+    }
+    */
     char toPop;
     Stack temp;
+    initStack(&temp);
 
     //transfer
     while(isEmpty(S)==false){
-        Stack temp;
         toPop = top(S); 
-        printf("|%c|\n", S.top->data); //printf("|%c|\n", S.Elem[trav].data);
+        printf("|%c|\n", toPop); 
         pop(&S);
         push(&temp, toPop);
     
     }
+    printf("---\n"); 
 
     //put back
     while(isEmpty(temp)==false){
