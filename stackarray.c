@@ -15,7 +15,7 @@ void pop(Stack *S){
     }
 }
 
-char top(Stack S){ // deffo change this lol
+char top(Stack S){ 
     if (!isEmpty(S)){
         return S.data[S.top];
     } 
@@ -27,7 +27,7 @@ bool isFull(Stack S){
     return (S.top == MAX - 1) ? true : false;
 }
 
-void displayStack(Stack S){ // just copy how i printed the stack in cursor based
+void displayStack(Stack S){ 
     printf("Stack: \n");
     if (isEmpty(S)){
         printf("Empty!\n ");
@@ -38,4 +38,5 @@ void displayStack(Stack S){ // just copy how i printed the stack in cursor based
          printf("|%c|\n", data);
          pop(&S);
     }
+    printf("---\n ");
 }
