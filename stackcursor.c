@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "stackcursor.h"
+#include "stackCursor.h"
 
 // make the rest of the functions here
-void initVirtualHeap(Stack *S) {
-    int length = MAX - 1;
+void initStack(Stack *S) {
+    int length = MAX;
+    // printf("MAX = %d", MAX);
     for (int ndx = 0; ndx < length; ndx++) {
-        S->Elem[ndx].link = ndx;
+        S->Elem[ndx].link = ndx - 1;
     }   
-    S->Avail = MAX;
+    S->Avail = MAX - 1;
     S->List = -1;
 }
 
 int allocSpace(Stack *S) {
     int ptr = S->Avail;
-    if (ptr = -1) {
+    if (ptr != -1) {
         S->Avail = S->Elem[ptr].link;
     }
     return ptr;
@@ -28,10 +29,11 @@ int deallocSpace(Stack *S, int index) {
 void push(Stack *S, char X) {
     // uses look-ahead
     int newNode = allocSpace(S);
+    // printf("Allocing space. New node = %d\n", newNode);
     if (newNode != -1) {
         S->Elem[newNode].data = X;
-        S->Elem[newNode].link = S->Elem[S->List].link;
-        S->Elem[S->List].link = newNode;
+        S->Elem[newNode].link = S->List;
+        S->List = newNode;
     }
 }
 
@@ -43,14 +45,22 @@ void pop(Stack *S) {
     }
 }
 
-char top(Stack *S) {
-    return S->Elem[S->List].data;
+char top(Stack S) {
+    return S.Elem[S.List].data;
 }
 
-bool isEmpty(Stack *S) {
-    return (S->List == -1) ? true : false;
+bool isEmpty(Stack S) {
+    return (S.List == -1) ? true : false;
 }
 
-bool isFull(Stack *S) {
-    return (S->Avail == -1) ? true : false;
+bool isFull(Stack S) {
+    return (S.Avail == -1) ? true : false;
+}
+
+void displayStack(Stack S) {
+    int trav = S.List;
+    for (trav; trav != -1; trav = S.Elem[trav].link) {
+        printf("|%c|\n", S.Elem[trav].data);
+    }
+    printf("---\n");
 }
