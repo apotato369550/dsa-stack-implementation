@@ -2,7 +2,6 @@
 #define STACKARRAY_H
 
 #include <stdbool.h>
-#include <stdio.h>
 #define MAX 10
 
 typedef struct {
@@ -13,7 +12,7 @@ typedef struct {
 void initStack(Stack *S);
 void push(Stack *S, char X);
 void pop(Stack *S);
-char top(Stack *S);
+char top(Stack S);
 bool isEmpty(Stack S);
 bool isFull(Stack S);
 void displayStack(Stack S);

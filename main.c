@@ -1,5 +1,5 @@
+#include "stackArray.h"
 #include <stdio.h>
-#include "stackCursor.h"
 
 void insertBottom(Stack *S, char X);
 
