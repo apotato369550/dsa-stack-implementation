@@ -25,3 +25,16 @@ bool isEmpty(Stack S){
 bool isFull(Stack S){
     return (S.top == MAX - 1) ? true : false;
 }
+
+void displayStack(Stack S){
+    printf("Stack: ");
+    if (isEmpty(S)){
+        printf("Empty!\n ");
+    }
+
+    while (!isEmpty(S)){
+        printf("%c ", S.data[S.top]);
+        pop(&S);
+        printf("%c ", (!isEmpty(S) ? ", " : ".\n"));
+    }
+}
