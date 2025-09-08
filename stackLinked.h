@@ -26,7 +26,7 @@ void push (Stack*, char);
 
 void pop (Stack *S);
 
-int top(Stack S);
+char top(Stack S);
 
 void displayStack(Stack S);
 
